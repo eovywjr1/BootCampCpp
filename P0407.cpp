@@ -9,39 +9,31 @@ int main()
 	int PocketSize = 0;
 	cin >> PocketSize;
 
-	vector<int> Pocket;
-	Pocket.resize(PocketSize);
+	vector<int> Pocket(PocketSize, 0);
 
 	for (int i = 0; i < PocketSize; i++)
 	{
 		Pocket[i] = i;
 	}
 
-	vector<int> SelectedIndexes;
+	vector<bool> SelectedIndexes(PocketSize, false);
 
 	srand(time(nullptr));
 
-	while (SelectedIndexes.size() < PocketSize)
+	int SelectCount = 0;
+	while (SelectCount < PocketSize)
 	{
-		const int RandomIndex = rand() % PocketSize;
-		bool bIsEqualIndex = false;
-
-		for (int SelectedIndex : SelectedIndexes)
-		{
-			if (SelectedIndex == RandomIndex)
-			{
-				bIsEqualIndex = true;
-				break;
-			}
-		}
-
-		if (bIsEqualIndex)
+		const int RandomIndex = static_cast<int>(rand() % PocketSize);
+		
+		if (SelectedIndexes[RandomIndex])
 		{
 			continue;
 		}
-
+		
 		cout << Pocket[RandomIndex] << ' ';
-		SelectedIndexes.push_back(RandomIndex);
+
+		++SelectCount;
+		SelectedIndexes[RandomIndex] = true;
 	}
 
 	return 0;
