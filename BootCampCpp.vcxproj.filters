@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Lotto.cpp">
+    <ClCompile Include="PlayerData.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
